@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MyTVShows" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#19191a</item>
+        <item name="colorPrimaryVariant">#2e2e2e</item>
+        <item name="colorOnPrimary">#424242</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#f3c813</item>
+        <item name="colorSecondaryVariant">#f3c813</item>
+        <item name="colorOnSecondary">#f3c813</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
