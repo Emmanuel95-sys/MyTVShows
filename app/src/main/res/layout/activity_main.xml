@@ -6,16 +6,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ShowPageActivity">
+    tools:context=".view.activities.ShowPageActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tvShowsRv"
-        android:background="@color/grey_dark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/grey_dark"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
-        tools:listitem="@layout/tv_show_item"
-        />
+        tools:listitem="@layout/tv_show_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

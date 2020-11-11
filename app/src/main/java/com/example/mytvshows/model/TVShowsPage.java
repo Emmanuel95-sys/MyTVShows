@@ -6,7 +6,7 @@ public class TVShowsPage {
     private String total = "";
     private int page;
     private int pages;
-    ArrayList<Show> shows;
+    private ArrayList<Show> tv_shows;
     private int code;
 
     public int getCode() {
@@ -42,10 +42,10 @@ public class TVShowsPage {
     }
 
     public ArrayList<Show> getShows() {
-        return shows;
+        return tv_shows;
     }
 
     public void setShows(ArrayList<Show> shows) {
-        this.shows = shows;
+        this.tv_shows = shows;
     }
 }
