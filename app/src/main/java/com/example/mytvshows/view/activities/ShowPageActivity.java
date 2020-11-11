@@ -3,6 +3,8 @@ package com.example.mytvshows.view.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.mytvshows.R;
 import com.example.mytvshows.interfaces.clicklistener.ClickListener;
@@ -22,6 +25,8 @@ import java.util.ArrayList;
 
 public class ShowPageActivity extends AppCompatActivity implements ClickListener<Show> , SearchView.OnQueryTextListener{
     private static final String TAG = "ShowPageActivity";
+    ImageView iv_page_back, iv_page_forward;
+    TextView tv_page_number;
     TvShowsViewModel tvShowsViewModel;
     RecyclerView tvShowsRv;
     TvShowPageAdapter tvShowPageAdapter;
@@ -56,9 +61,13 @@ public class ShowPageActivity extends AppCompatActivity implements ClickListener
     }
 
     private void initLayoutViews() {
+        iv_page_back = findViewById(R.id.iv_page_back);
+        iv_page_forward = findViewById(R.id.iv_page_forward);
+        tv_page_number = findViewById(R.id.tv_page_number);
         search_bar = findViewById(R.id.search_bar);
         search_bar.setOnQueryTextListener(ShowPageActivity.this);
         tvShowsRv= findViewById(R.id.tvShowsRv);
+        setPageTv();
     }
 
     @Override
@@ -87,18 +96,42 @@ public class ShowPageActivity extends AppCompatActivity implements ClickListener
     @Override
     public boolean onQueryTextChange(String newText) {
         if(newText.equals("")){
-            tvShowsViewModel.getShowPage(page);
-            tvShowsViewModel.tvShowsPageLiveData.observe(ShowPageActivity.this, new Observer<TVShowsPage>() {
-                @Override
-                public void onChanged(TVShowsPage tvShowsPage) {
-                    Log.d(TAG, "onChanged: " + tvShowsPage.getShows().size());
-                    tvShowPageAdapter = createAdapter(tvShowsPage.getShows());
-                    tvShowsRv.setAdapter(tvShowPageAdapter);
-                    tvShowPageAdapter.notifyDataSetChanged();
-                }
-            });
+            observePage();
         }
         return false;
+    }
+
+    private void observePage() {
+        tvShowsViewModel.getShowPage(page);
+        tvShowsViewModel.tvShowsPageLiveData.observe(ShowPageActivity.this, new Observer<TVShowsPage>() {
+            @Override
+            public void onChanged(TVShowsPage tvShowsPage) {
+                Log.d(TAG, "onChanged: " + tvShowsPage.getShows().size());
+                tvShowPageAdapter = createAdapter(tvShowsPage.getShows());
+                tvShowsRv.setAdapter(tvShowPageAdapter);
+                tvShowPageAdapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    public void incrementPage (View view){
+        page++;
+        observePage();
+        setPageTv();
+    }
+
+    private void setPageTv() {
+        tv_page_number.setText(String.valueOf(page));
+    }
+
+    public void decrementPage (View view){
+        if(page == 1){
+            page = 1;
+        }else{
+            page--;
+        }
+        observePage();
+        setPageTv();
     }
 
 }
