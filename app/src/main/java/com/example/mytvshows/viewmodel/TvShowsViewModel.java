@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.mytvshows.data.repository.TvShowDetails.ShowDetailRepository;
 import com.example.mytvshows.data.repository.TvShowpage.ShowsPageRepository;
-import com.example.mytvshows.model.TVShowsPage;
+import com.example.mytvshows.model.TVShowDetails.TvShow;
+import com.example.mytvshows.model.TVShowPage.TVShowsPage;
 
 public class TvShowsViewModel extends ViewModel {
 
@@ -14,6 +16,13 @@ public class TvShowsViewModel extends ViewModel {
 
     public void getShowPage(int page){
         tvShowsPageLiveData = showsPageRepository.getShowPage(page);
+    }
+
+    ShowDetailRepository showDetailRepository = new ShowDetailRepository();
+    public  LiveData<TvShow> tvShowLiveData = new MutableLiveData<>();
+
+    public void getShowDetails(Long showId){
+        tvShowLiveData = showDetailRepository.getShowDetails(showId);
     }
 
 }

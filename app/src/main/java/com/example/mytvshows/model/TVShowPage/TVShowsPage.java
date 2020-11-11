@@ -1,4 +1,4 @@
-package com.example.mytvshows.model;
+package com.example.mytvshows.model.TVShowPage;
 
 import java.util.ArrayList;
 

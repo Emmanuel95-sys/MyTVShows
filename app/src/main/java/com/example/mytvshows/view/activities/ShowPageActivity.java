@@ -5,17 +5,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.mytvshows.R;
-import com.example.mytvshows.model.Show;
-import com.example.mytvshows.model.TVShowsPage;
+import com.example.mytvshows.interfaces.clicklistener.ClickListener;
+import com.example.mytvshows.model.TVShowPage.Show;
+import com.example.mytvshows.model.TVShowPage.TVShowsPage;
 import com.example.mytvshows.view.adapters.TvShowPageAdapter;
 import com.example.mytvshows.viewmodel.TvShowsViewModel;
 
 import java.util.ArrayList;
 
-public class ShowPageActivity extends AppCompatActivity {
+public class ShowPageActivity extends AppCompatActivity implements ClickListener<Show> {
 
     TvShowsViewModel tvShowsViewModel;
     RecyclerView tvShowsRv;
@@ -42,7 +44,7 @@ public class ShowPageActivity extends AppCompatActivity {
     }
 
     private TvShowPageAdapter createAdapter(ArrayList<Show> shows) {
-        return new TvShowPageAdapter(shows);
+        return new TvShowPageAdapter(shows, this);
     }
 
     private void initViewModel() {
@@ -51,6 +53,13 @@ public class ShowPageActivity extends AppCompatActivity {
 
     private void initLayoutViews() {
         tvShowsRv= findViewById(R.id.tvShowsRv);
+    }
+
+    @Override
+    public void onClick(Show show, int position) {
+        Intent detailIntent = new Intent(ShowPageActivity.this, ShowDetailActivity.class);
+        detailIntent.putExtra("show", show);
+        startActivity(detailIntent);
     }
 
 }

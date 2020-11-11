@@ -1,7 +1,11 @@
-package com.example.mytvshows.model;
+package com.example.mytvshows.model.TVShowPage;
 
-public class Show {
-    private String id;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class Show implements Serializable {
+    private long id;
     private String name;
     private String permalink;
     private String start_date;
@@ -11,11 +15,11 @@ public class Show {
     private String status;
     private String image_thumbnail_path;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

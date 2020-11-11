@@ -4,7 +4,9 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.mytvshows.model.TVShowsPage;
+import com.example.mytvshows.data.repository.MyShowsApiService;
+import com.example.mytvshows.data.repository.ShowsApi;
+import com.example.mytvshows.model.TVShowPage.TVShowsPage;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,7 +23,7 @@ public class ShowsPageRepository {
         return showsPageRepository;
     }
 
-    private final ShowsApi showsApi;
+    private ShowsApi showsApi;
 
     public ShowsPageRepository(){
         showsApi = MyShowsApiService.createService(ShowsApi.class);
@@ -29,7 +31,7 @@ public class ShowsPageRepository {
 
     public MutableLiveData<TVShowsPage> getShowPage(int page){
 
-        final MutableLiveData<TVShowsPage> tvShowPageMLD = new MutableLiveData<>();
+        MutableLiveData<TVShowsPage> tvShowPageMLD = new MutableLiveData<>();
 
         showsApi.getShowPage(page).enqueue(new Callback<TVShowsPage>() {
 

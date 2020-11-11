@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTVShows">
-        <activity android:name=".view.ShowDetailActivity"></activity>
+        <activity android:name=".view.activities.ShowDetailActivity"></activity>
         <activity android:name=".view.activities.ShowPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
