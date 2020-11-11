@@ -1,6 +1,7 @@
 package com.example.mytvshows.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mytvshows.R;
+import com.example.mytvshows.Show;
+import com.example.mytvshows.databinding.ActivityShowDetailBinding;
 import com.example.mytvshows.model.TVShowDetails.TvShow;
-import com.example.mytvshows.model.TVShowPage.Show;
 import com.example.mytvshows.viewmodel.TvShowsViewModel;
 import com.squareup.picasso.Picasso;
 
@@ -22,14 +24,19 @@ public class ShowDetailActivity extends AppCompatActivity {
     private static final String TAG = "ShowDetailActivity";
 
     TvShowsViewModel tvShowsViewModel;
-    ImageView iv_back_arrow,iv_share,iv_portrait_show_image,imageView_header;
-    TextView tv_show_name,tv_show_name_yellow,tv_description,tv_rating,tv_genre,tv_release_date;
+    ImageView tv_show_name,iv_back_arrow,iv_share,iv_portrait_show_image,imageView_header;
+    TextView tv_show_name_yellow,tv_description,tv_rating,tv_genre,tv_release_date;
     RecyclerView rv_capitulos;
     Show show;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_detail);
+        ActivityShowDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_show_detail);
+        Bundle extras = getIntent().getExtras();
+        show = (Show) extras.getSerializable("show");
+        binding.setShow(show);
         initLayoutViews();
         initViewModel();
         observeData();
@@ -73,7 +80,7 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     private void updateUI(TvShow tvShow) {
         if(tvShow != null) {
-            tv_show_name.setText(tvShow.getName());
+//            tv_show_name.setText(tvShow.getName());
             tv_show_name_yellow.setText(tvShow.getName());
             tv_rating.setText(tvShow.getRating());
             tv_description.setText(tvShow.getDescription());
@@ -90,7 +97,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         iv_share = findViewById(R.id.iv_share);
         iv_portrait_show_image = findViewById(R.id.iv_portrait_show_image);
         imageView_header = findViewById(R.id.imageView_header);
-        tv_show_name = findViewById(R.id.tv_show_name);
+//        tv_show_name = findViewById(R.id.tv_show_name);
         tv_show_name_yellow = findViewById(R.id.tv_show_name_yellow);
         tv_description = findViewById(R.id.tv_description);
         tv_rating = findViewById(R.id.tv_rating);

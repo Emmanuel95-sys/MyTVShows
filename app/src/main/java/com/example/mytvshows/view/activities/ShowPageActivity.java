@@ -15,8 +15,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.mytvshows.R;
+import com.example.mytvshows.Show;
 import com.example.mytvshows.interfaces.clicklistener.ClickListener;
-import com.example.mytvshows.model.TVShowPage.Show;
 import com.example.mytvshows.model.TVShowPage.TVShowsPage;
 import com.example.mytvshows.view.adapters.TvShowPageAdapter;
 import com.example.mytvshows.viewmodel.TvShowsViewModel;

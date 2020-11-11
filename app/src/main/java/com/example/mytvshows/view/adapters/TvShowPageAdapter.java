@@ -11,8 +11,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytvshows.R;
+import com.example.mytvshows.Show;
 import com.example.mytvshows.interfaces.clicklistener.ClickListener;
-import com.example.mytvshows.model.TVShowPage.Show;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

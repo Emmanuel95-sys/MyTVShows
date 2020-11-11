@@ -1,6 +1,4 @@
-package com.example.mytvshows.model.TVShowPage;
-
-import com.google.gson.annotations.SerializedName;
+package com.example.mytvshows;
 
 import java.io.Serializable;
 

@@ -1,5 +1,7 @@
 package com.example.mytvshows.model.TVShowPage;
 
+import com.example.mytvshows.Show;
+
 import java.util.ArrayList;
 
 public class TVShowsPage {
