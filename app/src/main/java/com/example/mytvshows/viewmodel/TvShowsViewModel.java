@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.mytvshows.data.repository.SearchShowsRepository;
 import com.example.mytvshows.data.repository.TvShowDetails.ShowDetailRepository;
 import com.example.mytvshows.data.repository.TvShowpage.ShowsPageRepository;
 import com.example.mytvshows.model.TVShowDetails.TvShow;
@@ -23,6 +24,12 @@ public class TvShowsViewModel extends ViewModel {
 
     public void getShowDetails(Long showId){
         tvShowLiveData = showDetailRepository.getShowDetails(showId);
+    }
+
+    SearchShowsRepository searchShowsRepository = new SearchShowsRepository();
+
+    public void lookForShows(String query){
+        tvShowsPageLiveData = searchShowsRepository.lookForShows(query);
     }
 
 }

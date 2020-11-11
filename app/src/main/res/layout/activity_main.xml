@@ -8,17 +8,29 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.ShowPageActivity">
 
+    <SearchView
+        android:id="@+id/search_bar"
+        android:foregroundTint="@color/yellow"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/grey_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tvShowsRv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/grey_dark"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
         app:spanCount="2"
         tools:listitem="@layout/tv_show_item" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

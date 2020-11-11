@@ -25,4 +25,9 @@ public interface ShowsApi {
     @GET("show-details")
     Call<TvShowResponse> getShowDetails(@Query("q") Long showId);
 
+    /** buscar shos por search view*/
+
+    @GET("search")
+    Call<TVShowsPage> lookForShows(@Query("q") String query);
+
 }
